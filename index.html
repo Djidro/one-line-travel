@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="One Line Travel connects Rwandan talent with Dubai job opportunities. Licensed recruitment agency for hospitality, construction, IT jobs in Dubai.">
+  <meta name="keywords" content="Dubai jobs, Rwanda to Dubai, recruitment agency, Dubai work visa, Rwandan professionals">
+  <meta property="og:title" content="One Line Travel - Rwanda to Dubai Opportunities">
+  <meta property="og:description" content="Your trusted partner for Dubai career opportunities">
+  <meta property="og:type" content="website">
+  <title>One Line Travel | Rwanda to Dubai Opportunities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader">
+      <div class="airplane-loader">✈️</div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+      <p style="color:#d4af37; margin-top:1rem;">Loading Dubai Experience...</p>
+    </div>
+  </div>
+
+  <!-- Dubai Backdrop -->
+  <div class="dubai-backdrop"></div>
+
+  <!-- 3D Container -->
+  <div id="three-container"></div>
+
+  <!-- Main Content -->
+  <div class="content" id="main-content">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="logo gradient-text">ONE LINE TRAVEL</div>
+      <div class="nav-links">
+        <span tabindex="0" role="button" aria-label="Home section">Home</span>
+        <span tabindex="0" role="button" aria-label="Jobs section">Jobs in Dubai</span>
+        <span tabindex="0" role="button" aria-label="Process section">Process</span>
+        <span tabindex="0" role="button" aria-label="About section">About</span>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle day/night mode">🌙 Night Mode</button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="brand-3d">
+        <h1 class="main-title">
+          <span style="color:white;">ONE LINE</span><br>
+          <span class="gold-text">TRAVEL</span>
+        </h1>
+      </div>
+      <div class="subtitle">
+        ✈️ Connecting Rwanda Talent to Dubai Opportunities
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="trust-badges">
+        <div class="badge glass-card">
+          <span style="font-size:1.5rem;">✅</span>
+          <span>Licensed Agency</span>
+        </div>
+        <div class="badge glass-card">
+          <span style="font-size:1.5rem;">🛡️</span>
+          <span>Verified Employer</span>
+        </div>
+        <div class="badge glass-card">
+          <span style="font-size:1.5rem;">⭐</span>
+          <span>5-Star Rated</span>
+        </div>
+      </div>
+
+      <!-- Live Jobs Counter -->
+      <div class="live-jobs glass-card">
+        <span style="color:#25D366;">🔴 LIVE</span>
+        <strong id="jobCount">23 Active Jobs in Dubai</strong>
+        <p style="font-size:0.9rem; color:#ccc;">Updated <span id="updateTime">just now</span></p>
+      </div>
+
+      <div class="floating-elements">
+        <div class="float-item">🛂</div>
+        <div class="float-item">💼</div>
+        <div class="float-item">✈️</div>
+        <div class="float-item">🧳</div>
+      </div>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="scrollToJobs()">🔍 View Available Jobs</button>
+        <button class="btn btn-glass" onclick="openApplicationModal()">📋 Apply for Jobs</button>
+        <button class="btn btn-glass" onclick="openWhatsApp()">💬 Contact Us on WhatsApp</button>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+        <p style="color:#d4af37; margin-top:0.5rem;">Scroll to explore</p>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="company-info">
+      <div class="glass-card" style="padding:2.5rem;">
+        <h2 class="gradient-text" style="font-size:2rem; margin-bottom:1.5rem; text-align:center;">Why Choose One Line Travel?</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <span style="font-size:2.5rem;">🎯</span>
+            <h3 style="color:#d4af37; margin:0.5rem 0;">Direct Hiring</h3>
+            <p style="color:#ccc;">We work directly with Dubai employers, no middlemen</p>
+          </div>
+          <div class="feature">
+            <span style="font-size:2.5rem;">⚡</span>
+            <h3 style="color:#d4af37; margin:0.5rem 0;">Fast Processing</h3>
+            <p style="color:#ccc;">Visa and travel documents processed in 2-3 weeks</p>
+          </div>
+          <div class="feature">
+            <span style="font-size:2.5rem;">🤝</span>
+            <h3 style="color:#d4af37; margin:0.5rem 0;">Full Support</h3>
+            <p style="color:#ccc;">From application to arrival, we guide you every step</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust & Stats Section -->
+    <section class="trust-section" aria-label="Statistics and achievements">
+      <div class="glass-card stat-card">
+        <div class="stat-number" data-target="500">0+</div>
+        <h3>Rwandan Professionals Placed</h3>
+        <p style="color:#ccc; margin-top:0.5rem;">Successfully working in Dubai</p>
+      </div>
+      <div class="glass-card stat-card">
+        <div class="stat-number" data-target="15">0+</div>
+        <h3>Dubai Partner Companies</h3>
+        <p style="color:#ccc;">Trusted recruitment network</p>
+      </div>
+      <div class="glass-card stat-card">
+        <div class="stat-number" data-target="98">0%</div>
+        <h3>Visa Success Rate</h3>
+        <p style="color:#ccc;">Smooth relocation process</p>
+      </div>
+      <div class="glass-card testimonial">
+        <p style="font-style: italic; margin-bottom:1rem;">"One Line Travel made my Dubai dream real. Professional and fast!"</p>
+        <strong style="color:#d4af37;">— Jean P., Kigali</strong>
+      </div>
+    </section>
+
+    <!-- Our Reach Map -->
+    <section class="reach-section">
+      <div class="glass-card" style="padding:2rem; text-align:center;">
+        <h2 style="color:#d4af37; margin-bottom:1rem;">🗺️ Our Reach</h2>
+        <div class="reach-content">
+          <div class="reach-location">
+            <span style="font-size:2.5rem;">🇷🇼</span>
+            <h3>Kigali, Rwanda</h3>
+            <p style="color:#ccc;">Head Office</p>
+          </div>
+          <div class="reach-flight" style="font-size:2.5rem; color:#d4af37;">✈️</div>
+          <div class="reach-location">
+            <span style="font-size:2.5rem;">🇦🇪</span>
+            <h3>Dubai, UAE</h3>
+            <p style="color:#ccc;">Partner Offices</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Categories -->
+    <section class="job-categories-section">
+      <div class="glass-card" style="padding:2rem; text-align:center;">
+        <h2 style="color:#d4af37; margin-bottom:1rem;">🏗️ Dubai Job Categories</h2>
+        <div class="job-categories-grid">
+          <span class="job-category" tabindex="0" role="button">Hospitality</span>
+          <span class="job-category" tabindex="0" role="button">Construction</span>
+          <span class="job-category" tabindex="0" role="button">Logistics</span>
+          <span class="job-category" tabindex="0" role="button">Healthcare</span>
+          <span class="job-category" tabindex="0" role="button">IT & Tech</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="video-testimonials" aria-label="Success stories">
+      <h2 class="gradient-text" style="text-align:center; font-size:2.5rem; margin-bottom:2rem;">🌟 Success Stories</h2>
+      <div class="video-grid">
+        <div class="video-card glass-card" tabindex="0" role="button" aria-label="Watch Marie's story">
+          <div class="play-button">▶️</div>
+          <h4>Marie U.</h4>
+          <p>"From Kigali to Dubai in 2 weeks!"</p>
+          <small style="color:#d4af37;">Hospitality Professional</small>
+        </div>
+        <div class="video-card glass-card" tabindex="0" role="button" aria-label="Watch Jean's story">
+          <div class="play-button">▶️</div>
+          <h4>Jean D.</h4>
+          <p>"Doubled my salary working in Dubai"</p>
+          <small style="color:#d4af37;">Construction Manager</small>
+        </div>
+        <div class="video-card glass-card" tabindex="0" role="button" aria-label="Watch Alice's story">
+          <div class="play-button">▶️</div>
+          <h4>Alice K.</h4>
+          <p>"One Line Travel handled everything"</p>
+          <small style="color:#d4af37;">IT Specialist</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+      <div class="glass-card" style="padding:2.5rem; text-align:center;">
+        <h2 style="color:#d4af37; margin-bottom:1rem;">📧 Get Job Alerts</h2>
+        <p style="margin-bottom:1.5rem; color:#ccc;">Receive latest Dubai job openings directly to your email</p>
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required class="form-input" style="margin-bottom:0;" aria-label="Email for newsletter">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Currency Widget -->
+    <div class="currency-widget glass-card" aria-label="Currency converter">
+      <h4 style="color:#d4af37;">💰 Quick Converter</h4>
+      <p style="font-size:1.2rem;">1 AED = <span style="color:#25D366;">350 RWF</span></p>
+      <small style="color:#aaa;">Updated daily</small>
+    </div>
+
+    <footer role="contentinfo">
+      <p>© 2025 One Line Travel — Trusted Recruitment for Dubai Opportunities. Kigali, Rwanda.</p>
+      <p style="margin-top:0.5rem;">
+        <a href="#" style="color:#d4af37; text-decoration:none;">Privacy Policy</a> | 
+        <a href="#" style="color:#d4af37; text-decoration:none;">Terms of Service</a> | 
+        <a href="#" style="color:#d4af37; text-decoration:none;">Contact Us</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Application Modal -->
+  <div id="applyModal" class="modal" role="dialog" aria-label="Job application form">
+    <div class="modal-content glass-card">
+      <span class="close" onclick="closeApplicationModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
+      <h2 style="color:#d4af37; margin-bottom:1.5rem;">Quick Application</h2>
+      <form id="quickApply">
+        <input type="text" placeholder="Full Name" required class="form-input" aria-label="Full name">
+        <input type="email" placeholder="Email Address" required class="form-input" aria-label="Email address">
+        <input type="tel" placeholder="Phone Number (Rwanda)" class="form-input" aria-label="Phone number">
+        <select required class="form-input" aria-label="Job category">
+          <option value="">Select Job Category</option>
+          <option>Hospitality</option>
+          <option>Construction</option>
+          <option>Logistics</option>
+          <option>Healthcare</option>
+          <option>IT & Tech</option>
+        </select>
+        <textarea placeholder="Tell us about your experience" rows="3" class="form-input" aria-label="Experience description"></textarea>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Submit Application ✈️</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- WhatsApp Button -->
+  <a class="whatsapp-float" id="whatsappButton" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="35" height="35" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsent" class="cookie-banner" role="alert" aria-label="Cookie consent">
+    <p>🍪 We use cookies to enhance your experience. By continuing, you agree to our privacy policy.</p>
+    <button onclick="acceptCookies()" class="btn btn-primary" style="padding:0.5rem 1.5rem;">Accept</button>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
