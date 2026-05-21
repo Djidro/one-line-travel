@@ -1,5 +1,18 @@
-import * as THREE from 'three';
-import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+// THREE and CSS2DRenderer are loaded globally from CDN - no imports needed!
+
+// Fallback if Three.js fails to load
+if (typeof THREE === 'undefined') {
+  document.getElementById('three-container').innerHTML = `
+    <div style="display:flex; align-items:center; justify-content:center; height:100%; color:#d4af37; text-align:center; padding:2rem; background:linear-gradient(135deg, #0a1628, #1a2a4a);">
+      <div>
+        <p style="font-size:3rem;">🌟</p>
+        <h2 style="color:#d4af37;">One Line Travel</h2>
+        <p>Connecting Rwanda to Dubai</p>
+        <p style="font-size:0.9rem; margin-top:1rem;">All job listings and applications are available below</p>
+      </div>
+    </div>
+  `;
+}
 
 // Error handling for WebGL
 window.addEventListener('error', (e) => {
@@ -115,7 +128,8 @@ const textureLoader = new THREE.TextureLoader();
 const buildingTexture = textureLoader.load('https://images.pexels.com/photos/325193/pexels-photo-325193.jpeg?auto=compress&cs=tinysrgb&w=400');
 
 // Create Building Function
-function createBuilding(x, z, height, width, depth, color, windowColor = 0xffdd66) {
+function createBuilding(x, z, height, width, depth, color, windowColor) {
+  if (!windowColor) windowColor = 0xffdd66;
   const group = new THREE.Group();
   
   const geometry = new THREE.BoxGeometry(width, height, depth);
@@ -242,10 +256,10 @@ const buildings = [
   { x: -0.8, z: -1.2, h: 1.8, w: 0.4, d: 0.4, c: 0x6a7a8a },
   { x: 0.8, z: 1.0, h: 2.1, w: 0.4, d: 0.4, c: 0x7a8a9a },
   { x: -1.8, z: 1.0, h: 2.3, w: 0.35, d: 0.35, c: 0x8a9aaa },
-  { x: 1.8, z: -1.0, h: 2.4, w: 0.35, d: 0.35, c: 0x9aaaba },
+  { x: 1.8, z: -1.0, h: 2.4, w: 0.35, d: 0.35, c: 0x9aaaba }
 ];
 
-buildings.forEach(b => {
+buildings.forEach(function(b) {
   scene.add(createBuilding(b.x, b.z, b.h, b.w, b.d, b.c));
 });
 
@@ -324,10 +338,11 @@ scene.add(createPalmTree(-2.5, 2));
 scene.add(createPalmTree(2.5, 2));
 
 // Cars
-function createCar(color = 0xff4444) {
+function createCar(color) {
+  if (!color) color = 0xff4444;
   const car = new THREE.Group();
   const bodyGeo = new THREE.BoxGeometry(0.2, 0.1, 0.3);
-  const body = new THREE.Mesh(bodyGeo, new THREE.MeshStandardMaterial({ color, roughness: 0.3, metalness: 0.5 }));
+  const body = new THREE.Mesh(bodyGeo, new THREE.MeshStandardMaterial({ color: color, roughness: 0.3, metalness: 0.5 }));
   body.position.y = 0.15;
   car.add(body);
   
@@ -541,13 +556,13 @@ function animate() {
   airplane.rotation.y = Math.sin(time * 0.3) * 0.3;
   
   // Cars animation
-  cars.forEach(car => {
+  cars.forEach(function(car) {
     car.mesh.position.x += car.speed;
     if (car.mesh.position.x > 5) car.mesh.position.x = -5;
   });
   
   // Birds animation
-  birds.forEach(bird => {
+  birds.forEach(function(bird) {
     bird.mesh.position.x += Math.sin(time * bird.speed + bird.offset) * 0.02;
     bird.mesh.position.y += Math.cos(time * bird.speed * 0.7) * 0.01;
     bird.mesh.position.z += Math.cos(time * bird.speed * 0.5) * 0.02;
@@ -584,7 +599,7 @@ function animate() {
 animate();
 
 // Resize handler
-window.addEventListener('resize', () => {
+window.addEventListener('resize', function() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -592,8 +607,8 @@ window.addEventListener('resize', () => {
 });
 
 // Navigation menu functionality
-document.querySelectorAll('.nav-links span').forEach((link, index) => {
-  link.addEventListener('click', () => {
+document.querySelectorAll('.nav-links span').forEach(function(link, index) {
+  link.addEventListener('click', function() {
     const sections = [
       '.hero',
       '.job-categories-section',
@@ -609,7 +624,7 @@ document.querySelectorAll('.nav-links span').forEach((link, index) => {
   });
   
   // Keyboard accessibility
-  link.addEventListener('keydown', (e) => {
+  link.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       link.click();
@@ -621,7 +636,7 @@ document.querySelectorAll('.nav-links span').forEach((link, index) => {
 let isNight = true;
 const themeToggle = document.getElementById('themeToggle');
 if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
+  themeToggle.addEventListener('click', function() {
     isNight = !isNight;
     if (isNight) {
       scene.background = new THREE.Color(0x0a1628);
@@ -643,7 +658,7 @@ if (themeToggle) {
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-window.addEventListener('click', (event) => {
+window.addEventListener('click', function(event) {
   // Don't trigger on UI elements
   if (event.target.closest('.content') && !event.target.closest('canvas')) {
     return;
@@ -664,10 +679,11 @@ window.addEventListener('click', (event) => {
 });
 
 // Statistics Counter Animation
-function animateCounter(element, target, suffix = '+') {
+function animateCounter(element, target, suffix) {
+  if (!suffix) suffix = '+';
   let current = 0;
   const increment = target / 50;
-  const timer = setInterval(() => {
+  const timer = setInterval(function() {
     current += increment;
     if (current >= target) {
       element.textContent = target + suffix;
@@ -678,11 +694,11 @@ function animateCounter(element, target, suffix = '+') {
   }, 30);
 }
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
     if (entry.isIntersecting) {
       const counters = entry.target.querySelectorAll('.stat-number');
-      counters.forEach(counter => {
+      counters.forEach(function(counter) {
         const target = parseInt(counter.getAttribute('data-target'));
         const suffix = counter.textContent.includes('%') ? '%' : '+';
         animateCounter(counter, target, suffix);
@@ -692,7 +708,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.trust-section').forEach(section => {
+document.querySelectorAll('.trust-section').forEach(function(section) {
   observer.observe(section);
 });
 
@@ -702,7 +718,7 @@ function updateJobCount() {
   const jobCountElement = document.getElementById('jobCount');
   const updateTimeElement = document.getElementById('updateTime');
   if (jobCountElement) {
-    jobCountElement.textContent = `${count} Active Jobs in Dubai`;
+    jobCountElement.textContent = count + ' Active Jobs in Dubai';
   }
   if (updateTimeElement) {
     updateTimeElement.textContent = 'just now';
@@ -712,17 +728,17 @@ function updateJobCount() {
 setInterval(updateJobCount, 30000);
 
 // Modal functions
-window.openApplicationModal = () => {
+window.openApplicationModal = function() {
   const modal = document.getElementById('applyModal');
   if (modal) modal.style.display = 'block';
 };
 
-window.closeApplicationModal = () => {
+window.closeApplicationModal = function() {
   const modal = document.getElementById('applyModal');
   if (modal) modal.style.display = 'none';
 };
 
-window.onclick = (event) => {
+window.onclick = function(event) {
   const modal = document.getElementById('applyModal');
   if (event.target === modal) {
     modal.style.display = 'none';
@@ -730,7 +746,7 @@ window.onclick = (event) => {
 };
 
 // Close modal with Escape key
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeApplicationModal();
   }
@@ -739,7 +755,7 @@ document.addEventListener('keydown', (e) => {
 // Form submission
 const quickApplyForm = document.getElementById('quickApply');
 if (quickApplyForm) {
-  quickApplyForm.addEventListener('submit', (e) => {
+  quickApplyForm.addEventListener('submit', function(e) {
     e.preventDefault();
     alert('✅ Application submitted successfully! Our team will contact you within 24 hours.');
     closeApplicationModal();
@@ -749,7 +765,7 @@ if (quickApplyForm) {
 // Newsletter subscription
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
-  newsletterForm.addEventListener('submit', (e) => {
+  newsletterForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const emailInput = newsletterForm.querySelector('input[type="email"]');
     if (emailInput && emailInput.value) {
@@ -762,12 +778,12 @@ if (newsletterForm) {
 // WhatsApp functions
 const whatsappNumber = '+250793220330';
 
-window.openWhatsApp = () => {
+window.openWhatsApp = function() {
   const message = encodeURIComponent('Hello One Line Travel! I am interested in Dubai opportunities.');
-  window.open(`https://wa.me/${whatsappNumber.replace(/\+/g, '')}?text=${message}`, '_blank');
+  window.open('https://wa.me/' + whatsappNumber.replace(/\+/g, '') + '?text=' + message, '_blank');
 };
 
-window.scrollToJobs = () => {
+window.scrollToJobs = function() {
   const trustSection = document.querySelector('.trust-section');
   if (trustSection) {
     trustSection.scrollIntoView({ behavior: 'smooth' });
@@ -776,21 +792,21 @@ window.scrollToJobs = () => {
 
 const whatsappButton = document.getElementById('whatsappButton');
 if (whatsappButton) {
-  whatsappButton.addEventListener('click', (e) => {
+  whatsappButton.addEventListener('click', function(e) {
     e.preventDefault();
     window.openWhatsApp();
   });
 }
 
 // Video card click
-document.querySelectorAll('.video-card').forEach(card => {
-  card.addEventListener('click', () => {
+document.querySelectorAll('.video-card').forEach(function(card) {
+  card.addEventListener('click', function() {
     const name = card.querySelector('h4') ? card.querySelector('h4').textContent : '';
-    alert(`🎬 ${name}'s success story video coming soon! Real testimonials from Rwandan professionals in Dubai.`);
+    alert('🎬 ' + name + "'s success story video coming soon! Real testimonials from Rwandan professionals in Dubai.");
   });
   
   // Keyboard accessibility
-  card.addEventListener('keydown', (e) => {
+  card.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       card.click();
@@ -799,14 +815,14 @@ document.querySelectorAll('.video-card').forEach(card => {
 });
 
 // Job category click
-document.querySelectorAll('.job-category').forEach(category => {
-  category.addEventListener('click', () => {
+document.querySelectorAll('.job-category').forEach(function(category) {
+  category.addEventListener('click', function() {
     const categoryName = category.textContent;
-    alert(`🔍 Showing ${categoryName} jobs in Dubai. Full listings coming soon!`);
+    alert('🔍 Showing ' + categoryName + ' jobs in Dubai. Full listings coming soon!');
   });
   
   // Keyboard accessibility
-  category.addEventListener('keydown', (e) => {
+  category.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       category.click();
@@ -815,7 +831,7 @@ document.querySelectorAll('.job-category').forEach(category => {
 });
 
 // Cookie consent
-window.acceptCookies = () => {
+window.acceptCookies = function() {
   const cookieBanner = document.getElementById('cookieConsent');
   if (cookieBanner) {
     cookieBanner.style.display = 'none';
